@@ -1,6 +1,6 @@
 #!/bin/bash
 
-whil camel ps | grep Running > /dev/null;
+while camel ps | grep Running > /dev/null;
 do
     sleep 1;
     echo "Starting Camel Route..."
