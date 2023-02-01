@@ -7,4 +7,4 @@ curl --request POST --url http://localhost:8080/camel/api/post --header 'content
 
 # -- Run in Debug using bash
 docker run --rm -it -p 8080:8080 -p 8888:8888 rahgadda/eazyintegration bash
-docker exec -it rahgadda/eazyintegration rahgadda/eazyintegration bash
+docker exec -it rahgadda/eazyintegration rahgadda/eazyintegration bashcame

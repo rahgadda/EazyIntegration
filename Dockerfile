@@ -13,5 +13,6 @@ RUN mv jbang /usr/sbin/
 RUN jbang
 RUN jbang trust add https://github.com/apache/camel/
 RUN jbang app install camel@apache/camel
+
 EXPOSE 8080
-CMD ["camel","run","./route/remote-post-http.yaml","&"]
+EXPOSE 8888
