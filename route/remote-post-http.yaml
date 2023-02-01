@@ -1,0 +1,34 @@
+apiVersion: camel.apache.org/v1
+kind: Integration
+metadata:
+  name: remote-post-http.yaml
+spec:
+  flows:
+    - route:
+        from:
+          uri: netty-http:http://0.0.0.0:8080/camel/api/post
+          steps:
+            - to:
+                uri: >-
+                  atlasmap:file:/scratch/camel/mapping/remote-post-http-request.adm
+            - to:
+                uri: undertow:http://httpbin.org/post
+                parameters:
+                  useStreaming: true
+                  sendToAll: false
+            - to:
+                uri: >-
+                  atlasmap:file:/scratch/camel/mapping/remote-post-http-response.adm
+                parameters:
+                  allowContextMapAll: false
+                  contentCache: false
+                  forceReload: false
+                  lazyStartProducer: false
+          parameters:
+            bridgeEndpoint: true
+            httpMethodRestrict: POST
+            traceEnabled: true
+        id: http-post-details
+        description: POST Details From Http Bin
+  dependencies:
+    - mvn:org.apache.camel:camel-atlasmap:3.16.0
