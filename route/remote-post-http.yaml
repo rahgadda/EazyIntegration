@@ -33,3 +33,5 @@ spec:
         id: http-get-details
         description: Get Details From Http Bin
         trace: true
+  dependencies:
+    - mvn:org.apache.camel:camel-atlasmap:3.20.1

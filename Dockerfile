@@ -16,3 +16,5 @@ RUN jbang app install camel@apache/camel
 
 EXPOSE 8080
 EXPOSE 8888
+
+CMD ["/bin/bash"]
