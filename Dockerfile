@@ -3,10 +3,10 @@ MAINTAINER gaddam.rahul@gmail.
 
 SHELL ["/bin/bash", "-c"]
 
-WORKDIR /scratch/camel
-COPY mapping /scratch/camel/mapping/
-COPY route /scratch/camel/route/
-COPY jbang/bin/jbang /scratch/camel/
+WORKDIR /workspace/EazyIntegration
+COPY mapping /workspace/EazyIntegration/mapping/
+COPY route /workspace/EazyIntegration/route/
+COPY jbang/bin/jbang /workspace/EazyIntegration/
 
 RUN chmod +x jbang
 RUN mv jbang /usr/sbin/
