@@ -1,7 +1,7 @@
 apiVersion: camel.apache.org/v1
 kind: Integration
 metadata:
-  name: test
+  name: remote-post-http.yaml
 spec:
   flows:
     - route:
@@ -12,18 +12,24 @@ spec:
                 uri: >-
                   atlasmap:file:/workspace/EazyIntegration/mapping/remote-post-http-request.adm
             - to:
-                uri: undertow
+                uri: undertow:http://httpbin.org/post
                 parameters:
                   useStreaming: true
                   sendToAll: false
             - to:
                 uri: >-
                   atlasmap:file:/workspace/EazyIntegration/mapping/remote-post-http-response.adm
+                parameters:
+                  allowContextMapAll: false
+                  contentCache: false
+                  forceReload: false
+                  lazyStartProducer: true
           parameters:
-            keepAlive: true
             bridgeEndpoint: true
             httpMethodRestrict: POST
             traceEnabled: true
+            keepAlive: true
+            sync: true
+        id: http-get-details
+        description: Get Details From Http Bin
         trace: true
-        id: http-post-details
-        description: Post Details From Http Bin
