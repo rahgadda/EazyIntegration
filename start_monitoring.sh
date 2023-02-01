@@ -1,9 +1,9 @@
 #!/bin/bash
 
-while camel ps | grep Running > /dev/null;
+while ! camel ps | grep Running > /dev/null;
 do
     sleep 1;
-    echo "Starting Camel Route..."
+    echo "Waitig For Camel Route..."
 done
 
 # http://127.0.0.1:8778/jolokia/
